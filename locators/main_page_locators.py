@@ -18,7 +18,7 @@ class MainPageLocators:
     ID_ORDER_TEXT = (By.XPATH, '//p[text()="идентификатор заказа"]')
 
     """ Id оформленного заказа """
-    ID_ORDER = (By.CLASS_NAME, "Modal_modal__title_shadow__3ikwq")
+    ID_ORDER = (By.XPATH, './/h2[contains(@class, "text text_type_digits-large")]')
 
     """ Кнопка "Закрыть" """
     BUTTON_CLOSE = (By.XPATH, '//button[contains(@class,"close")]')
@@ -30,4 +30,4 @@ class MainPageLocators:
     INGREDIENT_COUNTER = (By.XPATH, './/p[contains(@class, "counter_counter")]')
 
     """ Корзина заказов """
-    BASKET_ORDER = (By.XPATH, '/html/body/div/div/main/section[2]/ul/li[2]')
+    BASKET_ORDER = (By.XPATH, './/ul[contains(@class, "BurgerConstructor_basket__list__l9dp_")]')

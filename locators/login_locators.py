@@ -1,6 +1,5 @@
 from selenium.webdriver.common.by import By
 
-
 class LoginLocators:
     """ Кнопка "Восстановить пароль" """
     BUTTON_RECOVERY_PASSWORD = (By.XPATH, '//*[text() = "Восстановить пароль"]')

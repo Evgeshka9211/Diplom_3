@@ -1,4 +1,6 @@
 import allure
+
+from helper import StringHelper
 from pages.main_page import MainPage
 from pages.order_feed_page import OrderFeedPage
 from pages.profile_page import ProfilePage
@@ -17,10 +19,11 @@ class TestOrderFeed:
         assert ofp.check_order_window()
 
     @allure.title('Сравнение идентификатора заказа в ленте и в истории')
-    def test_find_order_in_list(self, driver, test_data):
+    def test_find_order_in_list(self, driver):
         pp = ProfilePage(driver)
         ofp = OrderFeedPage(driver)
         mp = MainPage(driver)
+        test_data = StringHelper.test_data()
         pp.authorization(test_data)
         mp.add_filling_to_order()
         mp.click_element_if_clickable(MPL.BUTTON_ORDER)
@@ -34,10 +37,11 @@ class TestOrderFeed:
         assert order_id_order_feed and order_id_history
 
     @allure.title('Проверка изменения счетчика заказов')
-    def test_today_orders_counter(self, driver, test_data):
+    def test_today_orders_counter(self, driver):
         pp = ProfilePage(driver)
         ofp = OrderFeedPage(driver)
         mp = MainPage(driver)
+        test_data = StringHelper.test_data()
         pp.authorization(test_data)
         mp.click_element_if_clickable(MPL.BUTTON_ORDER_FEED)
         pre_count = ofp.get_total_count_today()
@@ -50,10 +54,11 @@ class TestOrderFeed:
         assert post_count > pre_count
 
     @allure.title('Проверка появления нового заказа в ленте')
-    def test_new_order_at_order_feed(self, driver, test_data):
+    def test_new_order_at_order_feed(self, driver):
         pp = ProfilePage(driver)
         ofp = OrderFeedPage(driver)
         mp = MainPage(driver)
+        test_data = StringHelper.test_data()
         pp.authorization(test_data)
         mp.add_filling_to_order()
         mp.click_element_if_clickable(MPL.BUTTON_ORDER)

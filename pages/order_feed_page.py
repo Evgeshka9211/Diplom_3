@@ -14,7 +14,6 @@ class OrderFeedPage(BasePage):
     @allure.step("Проверка нахождение идентификатора заказа в ленте")
     def found_order_at_feed(self, order_id):
         elements = self.find_until_all_elements_located(OPL.ORDERS_AT_FEED)
-
         for element in elements:
             if order_id == element.text:
                 return True

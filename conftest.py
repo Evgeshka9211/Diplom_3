@@ -2,8 +2,6 @@ import pytest
 
 from selenium import webdriver
 from data import Urls
-from helper import StringHelper
-
 
 @pytest.fixture(params=['firefox', 'chrome'])
 def driver(request):
@@ -19,12 +17,3 @@ def driver(request):
     browser.get(Urls.BASE_URL)
     yield browser
     browser.quit()
-
-@pytest.fixture
-def test_data():
-    data = {
-        'password': StringHelper.random_pass(),
-        'email': StringHelper.random_email(),
-        'name': StringHelper.random_name()
-    }
-    return data

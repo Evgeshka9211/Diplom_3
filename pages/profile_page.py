@@ -4,8 +4,6 @@ from data import Urls
 from pages.base_page import BasePage
 from locators.profile_locators import ProfileLocators as PL
 from locators.login_locators import LoginLocators as LL
-from conftest import test_data
-
 
 class ProfilePage(BasePage):
 
@@ -17,8 +15,7 @@ class ProfilePage(BasePage):
     @allure.step('Открытие страницы "История заказов" с проверкой открытия')
     def open_history_page(self):
         self.find_element_visibility(PL.BUTTON_HISTORY)
-        button_history = self.find_element_visibility(PL.BUTTON_HISTORY)
-        self.driver.execute_script('arguments[0].click();', button_history)
+        self.click_element_if_clickable(PL.BUTTON_HISTORY)
         if self.get_url() == Urls.ACCOUNT_HISTORY_URL:
             return True
         else:
@@ -35,8 +32,7 @@ class ProfilePage(BasePage):
 
     @allure.step('Нажатие кнопки "Выход" с проверкой выхода')
     def exit(self):
-        button_exit = self.find_element_visibility(PL.BUTTON_EXIT)
-        self.driver.execute_script('arguments[0].click();', button_exit)
+        self.click_element_if_clickable(PL.BUTTON_EXIT)
         self.find_element_not_visibility(PL.BUTTON_EXIT)
         if self.get_url() == Urls.LOGIN_URL:
             return True

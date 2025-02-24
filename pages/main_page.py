@@ -1,5 +1,4 @@
 import allure
-import time
 
 from pages.base_page import BasePage
 from data import Urls
@@ -53,11 +52,7 @@ class MainPage(BasePage):
     @allure.step('Получение id заказа')
     def get_order_id(self):
         self.find_element_visibility(MPL.ID_ORDER_TEXT)
+
+        self.find_element_has_value(MPL.ID_ORDER, "9999")
         order_id = self.get_text(MPL.ID_ORDER)
-        timeout = time.time() + 10
-        while True:
-            if order_id != '9999' or time.time() > timeout:
-                break
-            time.sleep(1)
-            order_id = self.get_text(MPL.ID_ORDER)
         return f"{order_id}"

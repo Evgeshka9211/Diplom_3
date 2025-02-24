@@ -7,17 +7,17 @@ def inner_random_string(length):
     return random_string
 
 class StringHelper:
-
     @staticmethod
-    def random_name():
-        return inner_random_string(8)
+    def test_data():
+        name = inner_random_string(8)
+        password = inner_random_string(6)
 
-    @staticmethod
-    def random_pass():
-        return inner_random_string(6)
-
-    @staticmethod
-    def random_email():
         characters = string.digits
         digits = ''.join(random.choice(characters) for _ in range(4))
-        return f'user_{digits}@yandex.ru'
+        email = f'user_{digits}@yandex.ru'
+        data = {
+            'name': name,
+            'password': password,
+            'email': email
+        }
+        return data

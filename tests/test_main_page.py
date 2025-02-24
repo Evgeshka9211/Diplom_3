@@ -1,4 +1,6 @@
 import allure
+
+from helper import StringHelper
 from pages.main_page import MainPage
 from pages.profile_page import ProfilePage
 from locators.main_page_locators import MainPageLocators as MPL
@@ -44,7 +46,8 @@ class TestMainPage:
         assert pre_result < post_result
 
     @allure.title('Создание заказа авторизованным пользователем')
-    def test_placing_order(self, driver, test_data):
+    def test_placing_order(self, driver):
+        test_data = StringHelper.test_data()
         pp = ProfilePage(driver)
         mp = MainPage(driver)
         pp.authorization(test_data)

@@ -64,3 +64,7 @@ class BasePage:
 
     def find_until_all_elements_located(self, locator):
         return WebDriverWait(self.driver, 20).until(EC.presence_of_all_elements_located(locator))
+
+    def find_element_has_value(self, locator, text):
+        return WebDriverWait(self.driver, 10).until_not(EC.text_to_be_present_in_element(locator, text),
+                                                         message=f"Change element value timeout: {locator}")
